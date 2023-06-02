@@ -7,7 +7,7 @@ import { createRecipe, updateRecipe } from "apis/Recipe";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { selectActiveRecipe } from "recoil/Selectors";
-import {IRecipe} from "interfaces";
+import { IRecipe } from "interfaces";
 
 const AdminRecipesForm = () => {
   const { recipeId } = useParams();
@@ -23,12 +23,12 @@ const AdminRecipesForm = () => {
 
   const recipeSchema = yup.object({
       title: yup.string()
-                .required("Le titre de la recette doit être renseigné")
-                .min(10, "Le titre doit être plus explicite")
-                .max(30, "Le titre doit être plus succinct"),
+        .required("Le titre de la recette doit être renseigné")
+        .min(10, "Le titre doit être plus explicite")
+        .max(30, "Le titre doit être plus succinct"),
       image: yup.string()
-                .required("Il faut renseigner une image")
-                .url("L'image doit être un lien valide")
+        .required("Il faut renseigner une image")
+        .url("L'image doit être un lien valide")
     })
   ;
 
@@ -56,21 +56,21 @@ const AdminRecipesForm = () => {
   };
 
   return (
-    <form className={ `d-flex flex-column card p-20 ${ styles.recipeForm }` } onSubmit={ handleSubmit(submit) }>
+    <form className={`d-flex flex-column card p-20 ${styles.recipeForm}`} onSubmit={handleSubmit(submit)}>
       <h2 className="mb-20">Add a recipe</h2>
       <div className="d-flex flex-column mb-20">
         <label className="mb-5">Title</label>
-        <input { ...register("title") } type="text" className="mb-5"/>
-        { errors.title && <p className="form-error">{ errors.title.message }</p> }
+        <input {...register("title")} type="text" className="mb-5"/>
+        {errors.title && <p className="form-error">{errors.title.message}</p>}
       </div>
       <div className="d-flex flex-column mb-20">
         <label className="mb-5">Image</label>
-        <input { ...register("image") } type="text" className="mb-5"/>
-        { errors.image && <p className="form-error">{ errors.image.message }</p> }
+        <input {...register("image")} type="text" className="mb-5"/>
+        {errors.image && <p className="form-error">{errors.image.message}</p>}
       </div>
-      { errors.generic && <p className="form-error">{ errors.generic.message }</p> }
+      {errors.generic && <p className="form-error">{errors.generic.message}</p>}
       <div>
-        <button disabled={ isSubmitting } className="btn btn-primary">Save</button>
+        <button disabled={isSubmitting} className="btn btn-primary">Save</button>
       </div>
     </form>
   );

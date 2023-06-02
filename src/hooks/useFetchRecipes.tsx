@@ -3,7 +3,7 @@ import { getRecipes } from "apis/Recipe";
 import { useSetRecoilState } from "recoil";
 import { recipesState } from "recoil/Atoms";
 
-export const useFetchRecipes = (): [boolean, string] => {
+export const useFetchRecipes = (): [ boolean, string ] => {
   const setRecipes = useSetRecoilState(recipesState);
   const [ isLoading, setIsLoading ] = useState(true);
   const [ error, setError ] = useState("");
@@ -16,7 +16,17 @@ export const useFetchRecipes = (): [boolean, string] => {
         // const fetchedRecipes = await APIRecipeManager.getRecipes();
         const fetchedRecipes = await getRecipes();
         if (!cancel) {
-          setRecipes(x => [...x, ...fetchedRecipes]);
+          setRecipes(oldState => {
+            const fetchedRecipesId = []
+            for (const fetchedRecipe of fetchedRecipes) {
+              fetchedRecipesId.push(fetchedRecipe.id)
+            }
+            const newState = []
+            for (const elem of oldState) {
+              if (!fetchedRecipesId.includes(elem.id)) newState.push(elem)
+            }
+            return [ ...newState, ...fetchedRecipes ]
+          });
         }
       } catch (e) {
         setError("ERREUR");
@@ -30,7 +40,7 @@ export const useFetchRecipes = (): [boolean, string] => {
     return () => {
       cancel = true
     };
-  }, [setRecipes]);
+  }, [ setRecipes ]);
 
   return [ isLoading, error ];
 };

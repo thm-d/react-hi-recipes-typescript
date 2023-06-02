@@ -9,8 +9,8 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { selectFilteredRecipes } from "recoil/Selectors";
 import { recipesState, wishlistDisplayState } from "recoil/Atoms";
 import { Wishlist } from "pages/Homepage/components/Wishlist";
-import {IRecipe} from "interfaces";
-import {ObjectId} from "types";
+import { IRecipe } from "interfaces";
+import { ObjectId } from "types";
 
 
 const Homepage = () => {
@@ -55,33 +55,33 @@ const Homepage = () => {
   return (
     <>
       <div className="d-flex flex-column flex-fill container p-20">
-        <h1 className={ `my-30 ${styles.title}` }>Discover our new recipes</h1>
-        <div className={ `card d-flex flex-fill flex-column p-20 mb-20 ${ styles.contentCard }` }>
-          <Search setFilter={ setFilter }/>
-          { isLoading ? (
+        <h1 className={`my-30 ${styles.title}`}>Discover our new recipes</h1>
+        <div className={`card d-flex flex-fill flex-column p-20 mb-20 ${styles.contentCard}`}>
+          <Search setFilter={setFilter}/>
+          {isLoading ? (
             <Loading/>
           ) : (
-            <div className={ styles.grid }>
-              { recipes.filter((r, index) => index <= nbrLimitOfRecipes)
-                       .map(r => (
-                         <Recipe key={ crypto.randomUUID() }
-                                 updateRecipe={ updateRecipe }
-                                 deleteRecipe={ deleteRecipe }
-                                 recipe={ r }
-                         />
-                       )) }
+            <div className={styles.grid}>
+              {recipes.filter((r, index) => index <= nbrLimitOfRecipes)
+                .map(r => (
+                  <Recipe key={crypto.randomUUID()}
+                          updateRecipe={updateRecipe}
+                          deleteRecipe={deleteRecipe}
+                          recipe={r}
+                  />
+                ))}
             </div>
-          ) }
+          )}
           <div className="d-flex flex-row align-items-center justify-content-center p-20">
-            { nbrLimitOfRecipes < recipes.length ? (
-              <button className="btn btn-primary" onClick={ handleClickLoadMoreRecipes }>LOAD MORE RECIPES</button>
+            {nbrLimitOfRecipes < recipes.length ? (
+              <button className="btn btn-primary" onClick={handleClickLoadMoreRecipes}>LOAD MORE RECIPES</button>
             ) : (
               <button className="btn btn-reverse-primary">NO MORE RECIPES</button>
-            ) }
+            )}
           </div>
         </div>
       </div>
-      { showWishlist && <Wishlist/> }
+      {showWishlist && <Wishlist/>}
     </>
   );
 };

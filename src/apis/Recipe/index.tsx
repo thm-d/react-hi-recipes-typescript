@@ -1,10 +1,10 @@
-import {IRecipe} from "interfaces";
-import {ObjectId} from "types";
+import { IRecipe } from "interfaces";
+import { ObjectId } from "types";
 
 const RECIPE_API = "https://recipes-33b07-default-rtdb.europe-west1.firebasedatabase.app/";
 
 export const getRecipes = async (): Promise<IRecipe[]> => {
-  const response = await fetch(`${ RECIPE_API }recipes.json`);
+  const response = await fetch(`${RECIPE_API}recipes.json`);
   if (response.ok) {
     const body = await response.json();
     const fetchedRecipes = [];
@@ -21,7 +21,7 @@ export const getRecipes = async (): Promise<IRecipe[]> => {
 };
 
 export const getRecipe = async (id: ObjectId): Promise<IRecipe> => {
-  const response = await fetch(`${ RECIPE_API }recipes/${ id }.json`);
+  const response = await fetch(`${RECIPE_API}recipes/${id}.json`);
   if (response.ok) {
     return response.json();
   } else {
@@ -30,7 +30,7 @@ export const getRecipe = async (id: ObjectId): Promise<IRecipe> => {
 };
 
 export const deleteRecipe = async (id: ObjectId): Promise<ObjectId> => {
-  const response = await fetch(`${ RECIPE_API }recipes/${ id }.json`, {
+  const response = await fetch(`${RECIPE_API}recipes/${id}.json`, {
     method: "DELETE"
   });
   if (response.ok) {
@@ -41,7 +41,7 @@ export const deleteRecipe = async (id: ObjectId): Promise<ObjectId> => {
 };
 
 export const updateRecipe = async (updatedRecipe: Partial<IRecipe>): Promise<IRecipe> => {
-  const response = await fetch(`${ RECIPE_API }recipes/${ updatedRecipe.id }.json`, {
+  const response = await fetch(`${RECIPE_API}recipes/${updatedRecipe.id}.json`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json"
@@ -56,7 +56,7 @@ export const updateRecipe = async (updatedRecipe: Partial<IRecipe>): Promise<IRe
 };
 
 export const createRecipe = async (newRecipe: Partial<IRecipe>): Promise<IRecipe> => {
-  const response = await fetch(`${ RECIPE_API }recipes.json`, {
+  const response = await fetch(`${RECIPE_API}recipes.json`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

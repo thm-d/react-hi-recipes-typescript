@@ -4,7 +4,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { recipesState, wishlistDisplayState } from "recoil/Atoms";
 import { selectWishedRecipes } from "recoil/Selectors";
 import { updateRecipe } from "apis/Recipe";
-import {IRecipe} from "interfaces";
+import { IRecipe } from "interfaces";
 
 export const Wishlist = () => {
   const setWishlistDisplay = useSetRecoilState(wishlistDisplayState);
@@ -30,26 +30,27 @@ export const Wishlist = () => {
   };
 
   return (
-    <div className={ styles.container }
-         onClick={ handleRemoveWishList }
+    <div className={styles.container}
+         onClick={handleRemoveWishList}
     >
-      <div className={ `${ styles.wishlist } ${ remove ? styles.remove : "" }` }
-           onClick={ (e) => e.stopPropagation() }
+      <div className={`${styles.wishlist} ${remove ? styles.remove : ""}`}
+           onClick={(e) => e.stopPropagation()}
       >
         <h4 className="mb-20">Wishlist</h4>
         <ul>
-          { wishedRecipes.length && wishedRecipes.map(r => (
-            <li key={ crypto.randomUUID() }
+          {wishedRecipes.length ? wishedRecipes.map(r => (
+            <li key={crypto.randomUUID()}
                 className="d-flex align-items-center mb-10"
             >
-              <span className="flex-fill mr-15">{ r.title }</span>
+              <span className="flex-fill mr-15">{r.title}</span>
               <button className="btn btn-primary"
-                      onClick={ () => handleClick(r) }
+                      onClick={() => handleClick(r)}
               >
                 <i className="fa-solid fa-trash"></i>
               </button>
             </li>
-          )) }
+          )) : <p style={{ color: "#b71540" }}><i className="fa-solid fa-heart-crack"></i> You don't have any favourite
+            recipes</p>}
         </ul>
       </div>
     </div>

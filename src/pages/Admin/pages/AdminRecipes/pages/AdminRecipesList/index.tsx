@@ -5,7 +5,7 @@ import { deleteRecipe as deleteR } from "apis/Recipe";
 import { NavLink } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { recipesState } from "recoil/Atoms";
-import {ObjectId} from "types";
+import { ObjectId } from "types";
 
 const AdminRecipesList = () => {
   useFetchRecipes();
@@ -17,23 +17,23 @@ const AdminRecipesList = () => {
   };
 
   return (
-    <ul className={ styles.list }>
-      { recipes.length
+    <ul className={styles.list}>
+      {recipes.length
         ? recipes.map(r => (
-          <li key={ crypto.randomUUID() }
-              className={ `d-flex align-items-center ${styles.li}` }
+          <li key={crypto.randomUUID()}
+              className={`d-flex align-items-center ${styles.li}`}
           >
-            <span className="flex-fill">{ r.title }</span>
-            <NavLink to={ `../edit/${ r.id }` }>
+            <span className="flex-fill">{r.title}</span>
+            <NavLink to={`../edit/${r.id}`}>
               <button className="btn btn-reverse-primary mr-15">Edit</button>
             </NavLink>
             <button className="btn btn-primary"
-                    onClick={ () => deleteRecipe(r.id) }
+                    onClick={() => deleteRecipe(r.id)}
             >Delete
             </button>
           </li>
         ))
-        : null }
+        : null}
     </ul>
   );
 };
