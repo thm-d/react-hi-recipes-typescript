@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# What about this project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi Recipes is a recipe management application based on an administration panel.
 
-## Available Scripts
+# Project Stack
 
-In the project directory, you can run:
+- React : 
+  - Recoil
+  - React Hook Form
+  - React Router Dom
+  
+- TypeScript
 
-### `npm start`
+- API : Firebase https://firebase.google.com/
+  
+- Sass
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Getting Started with Geolocation Application
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Click on "Hi Recipes" at the top left to return to the main page
+- Clicking on a recipe allows it to be added to or deleted from the wishlist
+- Clicking on the small cross in each recipe insert removes the recipe from the list
+- By clicking on "wishlist" at the top right of the main page, you can open a popup to display and manage the deletion of recipes from the wishlist section
+- By clicking on "admin" at the top right of the main page, you will be redirected to the admin panel where you can edit and delete recipes
+- Still on the admin panel, you can add a recipe by clicking on "add a recipe" (vertical image format and URL => https://unsplash.com/fr/photos/awj7sRviVXo)
+- In the "Recipes list" section, you can edit or delete a recipe
+- The empty "Users" section of the admin panel is currently only available as an example
