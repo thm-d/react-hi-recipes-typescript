@@ -4,7 +4,7 @@ import { data } from "data/recipes";
 
 export const recipesState = atom<IRecipe[]>({
   key: "recipesState",
-  default: data.map((d, i) => ({ id: Math.random().toString(), ...d }))
+  default: data.map((d, i) => ({ id: Math.random().toString().split(".").join("-"), ...d }))
 });
 
 export const wishlistDisplayState = atom({

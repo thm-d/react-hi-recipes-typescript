@@ -30,6 +30,7 @@ export const getRecipe = async (id: ObjectId): Promise<IRecipe> => {
 };
 
 export const deleteRecipe = async (id: ObjectId): Promise<ObjectId> => {
+  console.log(`${RECIPE_API}recipes/${id}.json`)
   const response = await fetch(`${RECIPE_API}recipes/${id}.json`, {
     method: "DELETE"
   });
