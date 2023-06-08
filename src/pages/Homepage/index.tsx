@@ -64,7 +64,7 @@ const Homepage = () => {
             <div className={styles.grid}>
               {recipes.filter((r, index) => index <= nbrLimitOfRecipes)
                 .map(r => (
-                  <Recipe key={crypto.randomUUID()}
+                  <Recipe key={Math.random()}
                           updateRecipe={updateRecipe}
                           deleteRecipe={deleteRecipe}
                           recipe={r}

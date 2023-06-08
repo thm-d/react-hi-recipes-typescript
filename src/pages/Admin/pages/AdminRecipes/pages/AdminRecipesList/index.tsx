@@ -20,7 +20,7 @@ const AdminRecipesList = () => {
     <ul className={styles.list}>
       {recipes.length
         ? recipes.map(r => (
-          <li key={crypto.randomUUID()}
+          <li key={Math.random()}
               className={`d-flex align-items-center ${styles.li}`}
           >
             <span className="flex-fill">{r.title}</span>

@@ -39,7 +39,7 @@ export const Wishlist = () => {
         <h4 className="mb-20">Wishlist</h4>
         <ul>
           {wishedRecipes.length ? wishedRecipes.map(r => (
-            <li key={crypto.randomUUID()}
+            <li key={Math.random()}
                 className="d-flex align-items-center mb-10"
             >
               <span className="flex-fill mr-15">{r.title}</span>
