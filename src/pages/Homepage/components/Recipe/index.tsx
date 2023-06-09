@@ -37,7 +37,7 @@ export const Recipe = (props: IProps) => {
       <div
         className={`${styles.recipeTitle} d-flex flex-column justify-content-center align-items-center`}
       >
-        <h3 className="mb-10">{title}</h3>
+        <h3 className={`mb-10 ${styles.title}`}>{title}</h3>
         <i className={`fa-solid fa-heart ${liked ? "text-primary" : ""}`}></i>
       </div>
     </div>
