@@ -25,3 +25,4 @@ Hi Recipes is a recipe management application based on an administration panel.
 - Still on the admin panel, you can add a recipe by clicking on "add a recipe" (vertical image format and URL => https://unsplash.com/fr/photos/awj7sRviVXo)
 - In the "Recipes list" section, you can edit or delete a recipe
 - The empty "Users" section of the admin panel is currently only available as an example
+- If no more recipes are stored on the application, a reset button will allow you to reset the application

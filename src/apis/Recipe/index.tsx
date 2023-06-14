@@ -1,29 +1,32 @@
 import { IRecipe } from "interfaces";
 import { ObjectId } from "types";
 
+
 const RECIPE_API = "https://recipes-33b07-default-rtdb.europe-west1.firebasedatabase.app/";
 
 export const getRecipes = async (): Promise<IRecipe[]> => {
-  const response = await fetch(`${RECIPE_API}recipes.json`);
-  if (response.ok) {
-    const body = await response.json();
-    const fetchedRecipes = [];
-    for (const key in body) {
-      fetchedRecipes.push({
-        id: key,
-        ...body[key]
-      });
+    const response = await fetch(`${RECIPE_API}recipes.json`);
+    if (response.ok) {
+      const body = await response.json();
+      const fetchedRecipes = [];
+      for (const key in body) {
+        fetchedRecipes.push({
+          id: key,
+          ...body[key]
+        });
+      }
+      return fetchedRecipes;
+    } else {
+      throw new Error("Error fetch recipes");
     }
-    return fetchedRecipes;
-  } else {
-    throw new Error("Error fetch recipes");
   }
-};
+;
 
 export const getRecipe = async (id: ObjectId): Promise<IRecipe> => {
   const response = await fetch(`${RECIPE_API}recipes/${id}.json`);
   if (response.ok) {
-    return response.json();
+    const recipe = await response.json();
+    return { id, ...recipe };
   } else {
     throw new Error("Error fetch one recipe");
   }

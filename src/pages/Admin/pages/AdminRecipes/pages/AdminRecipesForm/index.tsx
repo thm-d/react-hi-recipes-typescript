@@ -8,23 +8,25 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { selectActiveRecipe } from "recoil/Selectors";
 import { IRecipe } from "interfaces";
+import { recipesState } from "recoil/Atoms";
 
 const AdminRecipesForm = () => {
   const { recipeId } = useParams();
   const recipe = useRecoilValue(selectActiveRecipe(recipeId))
+  const recipes = useRecoilValue(recipesState);
 
   const navigate = useNavigate();
 
   const defaultValues = {
-    title: recipe ? recipe.title : '',
-    image: recipe ? recipe.image : '',
+    title: recipes.filter(r => r.id === recipeId)[0]?.title || recipe?.title || '',
+    image: recipes.filter(r => r.id === recipeId)[0]?.image || recipe?.image || '',
     generic: ""
   };
 
   const recipeSchema = yup.object({
       title: yup.string()
         .required("Le titre de la recette doit être renseigné")
-        .min(10, "Le titre doit être plus explicite")
+        .min(3, "Le titre doit être plus explicite")
         .max(30, "Le titre doit être plus succinct"),
       image: yup.string()
         .required("Il faut renseigner une image")
@@ -48,6 +50,7 @@ const AdminRecipesForm = () => {
         navigate("/admin/recipes/list");
       } else {
         await createRecipe(values);
+        navigate("/admin/recipes/list");
         reset(defaultValues);
       }
     } catch (e) {

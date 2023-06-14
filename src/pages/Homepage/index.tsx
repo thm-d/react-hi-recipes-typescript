@@ -4,22 +4,32 @@ import { Recipe } from "pages/Homepage/components/Recipe";
 import { Loading } from "components/Loading";
 import { Search } from "pages/Homepage/components/Search";
 import { useFetchRecipes } from "hooks/useFetchRecipes";
-import { deleteRecipe as deleteR, updateRecipe as updateR } from "apis/Recipe";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { deleteRecipe as deleteR, getRecipes, updateRecipe as updateR } from "apis/Recipe";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { selectFilteredRecipes } from "recoil/Selectors";
 import { recipesState, wishlistDisplayState } from "recoil/Atoms";
 import { Wishlist } from "pages/Homepage/components/Wishlist";
 import { IRecipe } from "interfaces";
 import { ObjectId } from "types";
+import { data } from "data/recipes";
+import { seedRecipes } from "data/seed";
 
 
 const Homepage = () => {
   const [ nbrLimitOfRecipes, setNbrLimitOfRecipes ] = useState(11);
   const [ filter, setFilter ] = useState("");
   const [ isLoading ] = useFetchRecipes();
+  const [ recipesList, setRecipes ] = useRecoilState(recipesState)
   const recipes = useRecoilValue(selectFilteredRecipes(filter));
-  const setRecipes = useSetRecoilState(recipesState);
   const showWishlist = useRecoilValue(wishlistDisplayState);
+
+  const resetApp = async () => {
+    for (const elem of data) {
+      await seedRecipes(elem)
+    }
+    const fetchedRecipes = await getRecipes();
+    setRecipes([ ...fetchedRecipes ])
+  }
 
   // const updateRecipe = (updatedRecipe) => {
   //   APIRecipeManager.updateRecipe(updatedRecipe)
@@ -76,7 +86,11 @@ const Homepage = () => {
             {nbrLimitOfRecipes < recipes.length ? (
               <button className="btn btn-primary" onClick={handleClickLoadMoreRecipes}>LOAD MORE RECIPES</button>
             ) : (
-              <button className="btn btn-reverse-primary">NO MORE RECIPES</button>
+              recipesList.length === 0 ? (
+                <button className="btn btn-primary" onClick={resetApp}>APPLICATION RESET</button>
+              ) : (
+                <button className="btn btn-reverse-primary">NO MORE RECIPES</button>
+              )
             )}
           </div>
         </div>
