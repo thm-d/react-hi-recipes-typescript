@@ -15,7 +15,7 @@ Hi Recipes is a recipe management application based on an administration panel.
   
 - Sass
 
-# Getting Started with Geolocation Application
+# Getting Started with Hi Recipes
 
 - Click on "Hi Recipes" at the top left to return to the main page
 - Clicking on a recipe allows it to be added to or deleted from the wishlist
